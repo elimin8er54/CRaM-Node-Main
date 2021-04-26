@@ -4,8 +4,8 @@
   "description": "Basic CRM Test",
   "main": "src/dist/index.js",
   "scripts": {
-    "build": "npm run test  && nodemon src/index.ts   && nodemon src/dist",
-    "start": "npm run build",
+    "build": "nodemon src/index.ts  && nodemon src/dist",
+    "start": "npm run test  && npm run build",
     "server": "nodemon src/index.ts && nodemon src/dist",
     "dev": "cross-env NODE_ENV=development npm run server",
     "test": "npm build"
