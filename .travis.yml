@@ -23,3 +23,5 @@ after_success:
   - docker build -t my_example_app .
   - docker tag my_example_app:latest 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
   - docker push 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
+  on:
+    branch: main
