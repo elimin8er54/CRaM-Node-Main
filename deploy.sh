@@ -16,11 +16,10 @@ terraform apply -auto-approve
 
 cd ..
 
-
 docker --version  # document the version travis is using
 pip install --user awscli # install aws cli w/o sudo
 export PATH=$PATH:$HOME/.local/bin # put aws in the path
 eval $(aws ecr get-login --region us-east-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
-docker build -t my_example_app .
-docker tag my_example_app:latest 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
-docker push 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
+docker build -t docker_ecr .
+docker tag docker_ecr:latest 347280423490.dkr.ecr.us-east-2.amazonaws.com/docker_ecr:latest
+docker push 347280423490.dkr.ecr.us-east-2.amazonaws.com/docker_ecr:latest
