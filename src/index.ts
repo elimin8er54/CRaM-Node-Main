@@ -10,14 +10,14 @@ const morgan = require('morgan');
 const app = express();
 const uri = config.MONGODB_DATABASE;
 const origin = "dut6jrd9rtjkk.cloudfront.net";
-
+const logLocation = "logs";
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.File({ filename: logLocation + '/error.log', level: 'error' }),
+    new winston.transports.File({ filename: logLocation + '/combined.log' }),
   ],
 });
 
