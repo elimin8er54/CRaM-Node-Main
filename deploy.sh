@@ -22,6 +22,7 @@ export PATH=$PATH:$HOME/.local/bin # put aws in the path
 aws configure set aws_access_key_id $AWS_ACCESS_KEY
 aws configure set aws_secret_access_key $AWS_SECRET_KEY
 aws configure set default.region us-east-2
+$(aws ecr get-login --region us-east-2)
 aws ecr get-login-password --region us-east-2 #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
 docker build -t docker_ecr .
 docker tag docker_ecr:latest 347280423490.dkr.ecr.us-east-2.amazonaws.com/docker_ecr:latest
