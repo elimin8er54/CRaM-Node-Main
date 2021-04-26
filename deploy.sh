@@ -14,6 +14,8 @@ terraform plan
 
 terraform apply -auto-approve
 
+cd ..
+
 
 docker --version  # document the version travis is using
 pip install --user awscli # install aws cli w/o sudo
