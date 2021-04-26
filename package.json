@@ -2,13 +2,13 @@
   "name": "shauntcrm",
   "version": "1.0.0",
   "description": "Basic CRM Test",
-  "main": "src/server/index.js",
+  "main": "src/dist/index.js",
   "scripts": {
-    "build": "npm run test && webpack --mode production",
-    "start": "npm run build && tsc -p src/server && nodemon src/server/dist/index.js && node src/server/dist/index.js",
-    "server": "nodemon src/server/index.ts && nodemon src/server/dist",
+    "build": "npm run test  && nodemon src/index.ts   && nodemon src/dist",
+    "start": "npm run build",
+    "server": "nodemon src/index.ts && nodemon src/dist",
     "dev": "cross-env NODE_ENV=development npm run server",
-    "test": ""
+    "test": "npm build"
   },
   "author": "Shaunt Keshishian",
   "dependencies": {

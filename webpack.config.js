@@ -1,12 +1,10 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 
 const outputDirectory = "dist";
 
 module.exports = {
-  entry: ["core-js/stable", "./src/client/index.tsx"],
+  entry: ["core-js/stable", "./src/index.ts"],
 
   output: {
     path: path.join(__dirname, outputDirectory),
@@ -50,7 +48,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "public")],
     publicPath: "/",
-    port: 3000,
+    port: 3001,
     proxy: {
       "/api": {
         changeOrigin: true,
