@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 12
+  # Install terraform
+services:
+  - docker
+before_install:
+  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
+  - unzip /tmp/terraform.zip -d /tmp
+  - mv /tmp/terraform ~/bin
+  - export PATH="~/bin:$PATH"
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: bash deploy.sh -var AWS_ACCESS_KEY=$AWS_ACCESS_KEY AWS_SECRET_KEY=$AWS_SECRET_KEY
+  on:
+    branch: main
+script:
+  - bundle exec rake test
+
+after_success:
+  - docker --version  # document the version travis is using
+  - pip install --user awscli # install aws cli w/o sudo
+  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - eval $(aws ecr get-login --region us-east-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - docker build -t my_example_app .
+  - docker tag my_example_app:latest 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
+  - docker push 347280423490.dkr.ecr.us-east-2.amazonaws.com/my_example_app:latest
