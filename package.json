@@ -8,7 +8,7 @@
     "start": "npm run build && tsc -p src/server && nodemon src/server/dist/index.js && node src/server/dist/index.js",
     "server": "nodemon src/server/index.ts && nodemon src/server/dist",
     "dev": "cross-env NODE_ENV=development npm run server",
-    "test": "jest"
+    "test": ""
   },
   "author": "Shaunt Keshishian",
   "dependencies": {
