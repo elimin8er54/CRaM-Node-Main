@@ -15,9 +15,6 @@ deploy:
   script: bash deploy.sh -var AWS_ACCESS_KEY=$AWS_ACCESS_KEY AWS_SECRET_KEY=$AWS_SECRET_KEY
   on:
     branch: main
-script:
-  - bundle exec rake test
-
 after_success:
   - docker --version  # document the version travis is using
   - pip install --user awscli # install aws cli w/o sudo
