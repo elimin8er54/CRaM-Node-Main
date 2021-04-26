@@ -18,7 +18,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "crm-node-state"
-    key    = "crm_node_state/terraform.tfstat"
+    key    = "terraform.tfstat"
     region = "us-east-2"
   }
 }
